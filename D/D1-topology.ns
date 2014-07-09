@@ -1,0 +1,23 @@
+set ns [new Simulator]                  
+source tb_compat.tcl
+set nodeA [$ns node]
+set nodeB [$ns node]
+set nodeC [$ns node]
+set nodeD [$ns node]
+set nodeE [$ns node]
+set link0 [$ns duplex-link $nodeD $nodeB 100Mb 0ms DropTail]
+set link1 [$ns duplex-link $nodeC $nodeB 100Mb 0ms DropTail]
+set link2 [$ns duplex-link $nodeD $nodeC 100Mb 0ms DropTail]
+set link3 [$ns duplex-link $nodeE $nodeD 100Mb 0ms DropTail]
+set link4 [$ns duplex-link $nodeB $nodeA 100Mb 0ms DropTail]
+
+# Set the OS on a couple.
+tb-set-node-os $nodeA FBSD-STD
+tb-set-node-os $nodeB FBSD-STD
+tb-set-node-os $nodeC FBSD-STD
+tb-set-node-os $nodeD FBSD-STD
+tb-set-node-os $nodeE FBSD-STD
+$ns rtproto Manual
+
+# Go!
+$ns run

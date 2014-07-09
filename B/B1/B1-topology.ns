@@ -1,0 +1,25 @@
+set ns [new Simulator]             	 
+source tb_compat.tcl
+
+set nodeA [$ns node]
+set nodeB [$ns node]
+set nodeC [$ns node]
+set nodeD [$ns node]
+set nodeE [$ns node]
+
+set link0 [$ns duplex-link $nodeE $nodeB 100Mb 0ms DropTail]
+set link1 [$ns duplex-link $nodeE $nodeC 100Mb 0ms DropTail]
+set link2 [$ns duplex-link $nodeE $nodeD 100Mb 0ms DropTail]
+set link3 [$ns duplex-link $nodeB $nodeA 30Mb 50ms DropTail]
+
+# Set the OS on a couple.
+tb-set-node-os $nodeA FBSD-STD
+tb-set-node-os $nodeB FBSD-STD
+tb-set-node-os $nodeC FBSD-STD
+tb-set-node-os $nodeD FBSD-STD
+tb-set-node-os $nodeE UBUNTU10-STD
+
+$ns rtproto Static
+
+# Go!	
+$ns run

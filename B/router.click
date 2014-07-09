@@ -1,0 +1,13 @@
+S0::FromDevice(eth1);
+S1::FromDevice(eth3);
+S2::FromDevice(eth4);
+Sw0:: EtherSwitch();
+q0::Queue ;
+q1::Queue ;
+q2::Queue ;
+D0:: ToDevice(eth1);
+D1:: ToDevice(eth3);
+D2:: ToDevice(eth4);
+S0 -> [0] Sw0 [0] -> q0 -> D0;
+S1 -> [1] Sw0 [1] -> q1 -> D1;
+S2 -> [2] Sw0 [2] -> q2 -> D2;

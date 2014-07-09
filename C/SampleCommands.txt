@@ -1,0 +1,7 @@
+ttcp -t -u  -s -n 20000 10.1.2.3
+
+ttcp -r -u -s
+
+ttcp -t -s -n 20000 10.1.2.3
+
+ttcp -r -u -s
